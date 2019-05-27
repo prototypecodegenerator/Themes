@@ -1,0 +1,20 @@
+- (UILabel *){{prefix}}Label {
+    if (!_{{prefix}}Label) {
+        _{{prefix}}Label = [[UILabel alloc] initWithFrame:CGRectZero];
+        {{#textColor}}
+        _{{prefix}}Label.textColor = LSJ_COLOR_WITH_HEXADECIMAL(0x{{textColor}});
+        {{/textColor}}
+        {{#font}}
+        {{#isBold}}
+        _{{prefix}}Label.font = [UIFont boldSystemFontOfSize:{{font}}];
+        {{/isBold}}
+        {{^isBold}}
+        _{{prefix}}Label.font = [UIFont systemFontOfSize:{{font}}];
+        {{/isBold}}
+        {{/font}}
+        {{#text}}
+        _{{prefix}}Label.text = @"{{text}}";
+        {{/text}}
+    }
+    return _{{prefix}}Label;
+}
