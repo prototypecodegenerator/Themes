@@ -1,0 +1,9 @@
+@property (nonatomic, strong) UIImageView *{{prefix}}ImageView;
+
+- (UIImageView *){{prefix}}ImageView {
+    if (!_{{prefix}}ImageView) {
+        _{{prefix}}ImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _{{prefix}}ImageView.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    return _{{prefix}}ImageView;
+}
