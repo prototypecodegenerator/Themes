@@ -1,0 +1,36 @@
+@property (nonatomic, strong) UIButton *{{prefix}}Button;
+
+- (UIButton *){{prefix}}Button {
+    if (!_{{prefix}}Button) {
+        _{{prefix}}Button = [UIButton buttonWithType:UIButtonTypeCustom];
+        {{#backgroundColor}}
+        _{{prefix}}Button.backgroundColor = LSJ_COLOR_WITH_HEXADECIMAL(0x{{backgroundColor}});
+        {{/backgroundColor}}
+        {{#text}}
+        [_{{prefix}}Button setTitle:@"{{text}}" forState:UIControlStateNormal];
+        {{/text}}
+        {{#textColor}}
+        [_{{prefix}}Button setTitleColor:LSJ_COLOR_WITH_HEXADECIMAL(0x{{textColor}}) forState:UIControlStateNormal];
+        {{/textColor}}
+        {{#borderWidth}}
+        _{{prefix}}Button.layer.borderWidth = {{borderWidth}};
+        {{/borderWidth}}
+        {{#borderColor}}
+        _{{prefix}}Button.layer.borderColor = LSJ_COLOR_WITH_HEXADECIMAL(0x{{borderColor}}).CGColor;
+        {{/borderColor}}
+        {{#cornerRadius}}
+        _{{prefix}}Button.layer.cornerRadius = {{cornerRadius}};
+        _{{prefix}}Button.layer.masksToBounds = YES;
+        {{/cornerRadius}}
+        {{#font}}
+        {{#isBold}}
+        _{{prefix}}Button.titleLabel.font = [UIFont boldSystemFontOfSize:{{font}}];
+        {{/isBold}}
+        {{^isBold}}
+        _{{prefix}}Button.titleLabel.font = [UIFont systemFontOfSize:{{font}}];
+        {{/isBold}}
+        {{/font}}
+        [_{{prefix}}Button addTarget:self action:@selector({{prefix}}ButtonClick) forControlEvents:UIControlStateNormal];
+    }
+    return _{{prefix}}Button;
+}
