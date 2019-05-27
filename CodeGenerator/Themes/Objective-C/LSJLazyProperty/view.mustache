@@ -1,0 +1,19 @@
+- (UIView *){{prefix}}View {
+    if (!_{{prefix}}View) {
+        _{{prefix}}View = [[UIView alloc] initWithFrame:CGRectZero];
+        {{#backgroundColor}}
+        _{{prefix}}View.backgroundColor = LSJ_COLOR_WITH_HEXADECIMAL(0x{{backgroundColor}});
+        {{/backgroundColor}}
+        {{#borderWidth}}
+        _{{prefix}}View.layer.borderWidth = {{borderWidth}};
+        {{/borderWidth}}
+        {{#borderColor}}
+        _{{prefix}}View.layer.borderColor = LSJ_COLOR_WITH_HEXADECIMAL(0x{{borderColor}}).CGColor;
+        {{/borderColor}}
+        {{#cornerRadius}}
+        _{{prefix}}View.layer.cornerRadius = {{cornerRadius}};
+        _{{prefix}}View.layer.masksToBounds = YES;
+        {{/cornerRadius}}
+    }
+    return _{{prefix}}View;
+}
